@@ -6,7 +6,7 @@
     <title>Raças - MWC RPG</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilos específicos da página de raças */
+        /* ESTILOS EXCLUSIVOS DA PÁGINA DE RAÇAS */
         .racas-header {
             text-align: center;
             padding: 40px 20px;
@@ -26,99 +26,63 @@
             font-size: 18px;
         }
 
-        .raca-card-completo {
+        .racas-lista {
+            max-width: 800px;
+            margin: 0 auto;
             background: #1a2639;
             border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
+            padding: 30px;
             border-bottom: 4px solid #4a6fa5;
-            transition: 0.3s;
         }
 
-        .raca-card-completo:hover {
-            border-bottom-color: #ffd700;
+        .raca-item {
+            display: flex;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px solid #4a6fa5;
+        }
+
+        .raca-item:last-child {
+            border-bottom: none;
         }
 
         .raca-nome {
             color: #ffd700;
-            font-size: 28px;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #4a6fa5;
-            padding-bottom: 10px;
-        }
-
-        .buffs-box {
-            background: #0f1a2b;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #4a6fa5;
-        }
-
-        .buffs-titulo {
-            color: #a8c7fa;
+            font-size: 20px;
             font-weight: bold;
-            margin-bottom: 5px;
+            min-width: 150px;
         }
 
-        .buffs-valor {
-            color: white;
+        .raca-buffs {
+            color: #ddd;
             font-size: 16px;
+            margin-left: 20px;
         }
 
-        .buffs-valor span.positivo {
+        .positivo {
             color: #4CAF50;
         }
 
-        .buffs-valor span.negativo {
+        .negativo {
             color: #f44336;
         }
 
-        .habilidades-titulo {
-            color: #ffd700;
-            font-size: 20px;
-            margin: 20px 0 10px;
+        .escolha {
+            color: #a8c7fa;
+            font-style: italic;
         }
 
-        .habilidade-item {
-            background: #0f1a2b;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .habilidade-nome {
-            color: #ffd700;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .habilidade-tipo {
-            background: #4a6fa5;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        .habilidade-desc {
-            color: #ddd;
-            margin-top: 8px;
-            line-height: 1.5;
-        }
-
-        .grid-racas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .grid-racas {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+            .raca-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .raca-nome {
+                min-width: auto;
+            }
+            .raca-buffs {
+                margin-left: 0;
             }
         }
     </style>
@@ -148,609 +112,130 @@
             <p>16 raças únicas para explorar no mundo de Magic World and Creatures</p>
         </div>
 
-        <div class="grid-racas">
-            <!-- HUMANO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Humano</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">Nenhum</div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Simplicidade
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para receber uma dica sobre a situação. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Trabalhador
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para +1 em FOR, AGI e VIG por 4 turnos, ou 5PE para +1 por toda cena. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Aprendiz
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Dedique pelo menos 2 horas do seu dia em treino/estudo para ganhar 1 ponto de atributo permanente ou aprender algo.</div>
-                </div>
+        <div class="racas-lista">
+            <!-- Humano -->
+            <div class="raca-item">
+                <span class="raca-nome">Humano</span>
+                <span class="raca-buffs">Não recebem</span>
             </div>
-
-            <!-- ELFO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Elfo</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+1 MEN, +1 MAG</span> | 
-                        <span class="negativo">-1 FOR, -1 VIG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Estudioso
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste PE (quanto mais, melhor) para aprender uma informação sobre algo. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Observador
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 1 ação completa para analisar algo ou alguém, ganhando informações. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Amigo da natureza
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Conhece sobre plantas, ervas e animais (HP máximo de criaturas, efeitos de ervas).</div>
-                </div>
+            <!-- Elfo -->
+            <div class="raca-item">
+                <span class="raca-nome">Elfo</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+1 MIN, +1 MAG</span>, 
+                    <span class="negativo">-1 FOR, -1 VIG</span>
+                </span>
             </div>
-
-            <!-- ELFO ALTO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Elfo Alto</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+1 VIG, +1 AGI</span> | 
-                        <span class="negativo">-1 FOR, -1 MEN</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Corredor
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para receber +1 em AGI por 1 cena. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Escudo
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para anular 2 pontos de dano. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Social
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Habilidades de conversação: convencer, enganar e acalmar.</div>
-                </div>
+            <!-- Elfo Alto -->
+            <div class="raca-item">
+                <span class="raca-nome">Elfo Alto</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+1 VIG, +1 AGI</span>, 
+                    <span class="negativo">-1 FOR, -1 MIN</span>
+                </span>
             </div>
-
-            <!-- ELFO NEGRO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Elfo Negro</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+1 VIG, +1 AGI</span> | 
-                        <span class="negativo">-1 MEN, -1 MAG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Resistente
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para reduzir o dano recebido em -3. 3 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Veterano de guerra
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para criar um plano de guerra (tática de combate). 2 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Sobrevivente
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Conhece os perigos da natureza e sabe como sobreviver a eles.</div>
-                </div>
+            <!-- Elfo Negro -->
+            <div class="raca-item">
+                <span class="raca-nome">Elfo Negro</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+1 VIG, +1 AGI</span>, 
+                    <span class="negativo">-1 MIN, -1 MAG</span>
+                </span>
             </div>
-
-            <!-- ANJO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Anjo</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+1 MAG e +1 MEN ou +1 AGI</span> | 
-                        <span class="negativo">-1 FOR, -1 VIG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Amigo dos animais
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Sabe a vida máxima de animais. Com teste de MEN, descobre vida atual. Pode tentar adestrar.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Cura
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para 1d6 de cura. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Escolhido pela Luz
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Afinidade com o elemento luz. Com treino pode dominar esse elemento.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Inimizade
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Não confia em demônios e tem dificuldade em se relacionar com eles.</div>
-                </div>
+            <!-- Anjo -->
+            <div class="raca-item">
+                <span class="raca-nome">Anjo</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+1 MAG</span>, 
+                    <span class="negativo">-1 FOR, -1 VIG</span>, 
+                    <span class="escolha">+1 escolha</span>
+                </span>
             </div>
-
-            <!-- DEMÔNIO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Demônio</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+1 MAG ou AGI e +1 FOR ou VIG</span> | 
-                        <span class="negativo">-1 AGI ou FOR e -1 MEN ou MAG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Político
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para enganar um NPC ou player (se a pessoa não souber toda a verdade).</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Couro demoníaco
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para reduzir o dano recebido em -3. 3 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Amigo das chamas
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Não sofre dano por fogo fraco. Defesa contra fogo: 1 + VIG.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Inimizade
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Não confia em anjos e tem dificuldade de se relacionar com eles.</div>
-                </div>
+            <!-- Demônio -->
+            <div class="raca-item">
+                <span class="raca-nome">Demônio</span>
+                <span class="raca-buffs">
+                    <span class="escolha">+1 escolha, -1 escolha</span>
+                </span>
             </div>
-
-            <!-- ORC -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Orc</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+3 FOR, +3 VIG</span> | 
-                        <span class="negativo">-2 MEN, -1 MAG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Chamariz
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para atrair criaturas num raio de 15m até você. 2 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Pele de aço
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 1PE para reduzir o dano recebido em 3. 2 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Frenesi
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Quando está com 1/4 da vida total e passar num teste de ataque, role 2d4 para número de ataques no turno, mas recebe metade do dano causado.</div>
-                </div>
+            <!-- Orc -->
+            <div class="raca-item">
+                <span class="raca-nome">Orc</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+3 FOR, +3 VIG</span>, 
+                    <span class="negativo">-2 MIN, -1 MAG</span>
+                </span>
             </div>
-
-            <!-- GOLEM -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Golem</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+3 VIG, +4 FOR ou +4 MAG</span> | 
-                        <span class="negativo">-7 AGI</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Pele de aço
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para reduzir o dano recebido em 6. 2 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Impacto
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para aumentar o dano do seu murro em mais um dado do mesmo tipo.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Pedra
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Defesa contra impacto: 2 + VIG. Pode curar vida comendo minerais. Não pode usar armas.</div>
-                </div>
+            <!-- Golem -->
+            <div class="raca-item">
+                <span class="raca-nome">Golem</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+3 VIG, +4 escolha</span>, 
+                    <span class="negativo">-7 AGI</span>
+                </span>
             </div>
-
-            <!-- DRACONÍDEO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Draconídeo</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+3 AGI ou MAG e +3 FOR ou VIG</span> | 
-                        <span class="negativo">-1 nos atributos opostos</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Disparo de escama
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Dispara escamas do corpo causando 1d10 de dano, mas perde defesa pelo resto do dia. 1 vez por dia.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Reforço
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para aumentar seu dano. 1 vez por turno (apenas combate).</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Mandíbula de ferro
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Mordida causa 1d8 de dano.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Escamas de ferro
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Defesa 1 + VIG. Afinidade com algum elemento natural.</div>
-                </div>
+            <!-- Draconídeo -->
+            <div class="raca-item">
+                <span class="raca-nome">Draconídeo</span>
+                <span class="raca-buffs">
+                    <span class="escolha">+3 escolha, -1 escolha</span>
+                </span>
             </div>
-
-            <!-- FADA ALTA -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Fada Alta</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+1 MEN, +1 MAG</span> | 
-                        <span class="negativo">-1 FOR, -1 VIG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Caixa de mana
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">A cada 2cm adicional na altura (a partir de 155cm), recebe +25 de mana, porém perde 1 de agilidade.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Beleza de Fada
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para convencer um ser pensante do gênero oposto. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Encolhimento
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 3PE para ficar com altura de fada normal (15-30cm) por uma cena. Ganha +3 AGI por cm reduzido, perde mana bônus. 1 vez a cada 3 cenas.</div>
-                </div>
+            <!-- Fada Alta -->
+            <div class="raca-item">
+                <span class="raca-nome">Fada Alta</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+1 MIN, +1 MAG</span>, 
+                    <span class="negativo">-1 FOR, -1 VIG</span>
+                </span>
             </div>
-
-            <!-- FADA -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Fada</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+3 AGI, +1 MAG</span> | 
-                        <span class="negativo">-2 FOR, -2 VIG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Teleporte curto
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para se teletransportar instantaneamente a uma distância curta. 4 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Oculto
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Sabe se esconder bem, consegue ficar escondido(a) em locais pequenos.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Crescimento espontâneo
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para ficar da altura de uma fada alta (155-165cm). Ganha +25 mana a cada 2cm, perde bônus de AGI da altura.</div>
-                </div>
+            <!-- Fada -->
+            <div class="raca-item">
+                <span class="raca-nome">Fada</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+3 AGI, +1 MAG</span>, 
+                    <span class="negativo">-2 FOR, -2 VIG</span>
+                </span>
             </div>
-
-            <!-- TRITÃO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Tritão</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">Na água: +2 VIG, +3 AGI</span><br>
-                        <span class="negativo">Em terra: -3 AGI, +1 VIG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Peixe
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Respiração aquática, afinidade com água. Gaste 2PE para virar peixe: +2 AGI por 1 cena. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Corpo de água
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste PE para reduzir dano (quanto mais PE, mais redução, possível anular). 1 vez por dia.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Eco localização Aqua
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">2PE para escanear interior da água em 15m. 3 vezes por cena.</div>
-                </div>
+            <!-- Tritão -->
+            <div class="raca-item">
+                <span class="raca-nome">Tritão</span>
+                <span class="raca-buffs">
+                    Na água: <span class="positivo">+2 VIG, +3 AGI</span>; 
+                    Terra: <span class="negativo">-3 AGI</span>, <span class="positivo">+1 VIG</span>
+                </span>
             </div>
-
-            <!-- BESTA -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Besta</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+2 FOR, +2 AGI ou VIG</span> | 
-                        <span class="negativo">-3 MEN, -1 MAG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Faro predador
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Sente cheiro de presas e aliados a 15m (pode aumentar com PE). 2 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Garras de monstro
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Garras causam 1d6+2 de dano.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Camuflado
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Gaste 2PE para camuflar a si mesmo e aliados (aparência e cheiro). 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Mandíbula de ferro
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Mordida causa 1d8 de dano.</div>
-                </div>
+            <!-- Besta -->
+            <div class="raca-item">
+                <span class="raca-nome">Besta</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+2 FOR, +2 AGI ou VIG</span>, 
+                    <span class="negativo">-3 MIN, -1 MAG</span>
+                </span>
             </div>
-
-            <!-- GOBLIN -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Goblin</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+2 AGI, +1 MEN</span> | 
-                        <span class="negativo">-2 MEN (perto de ouro), -1 FOR, -1 VIG</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Mão leve
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Muito bom em furtos, especialmente ouro. Pode roubar 2 vezes por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Meu precioso
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Viciado em ouro. Precisa estar em contato com ouro para manter a calma; caso contrário, precisa roubar.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Goblin dourado
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Quanto mais ouro em contato, mais bônus.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Diplomata ladrão
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">2PE para convencer alguém a fazer algo (teste). 2 vezes por cena.</div>
-                </div>
+            <!-- Goblin -->
+            <div class="raca-item">
+                <span class="raca-nome">Goblin</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+2 AGI, +1 MIN</span>, 
+                    <span class="negativo">-2 MIN (perto de ouro), -1 FOR, -1 VIG</span>
+                </span>
             </div>
-
-            <!-- VAMPIRO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Vampiro</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+2 MEN ou FOR, +1 MAG ou AGI</span> | 
-                        <span class="negativo">-3 VIG (durante o dia), -1 FOR ou MEN</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Sangue-suga
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Ao sugar sangue, cura 1d4 de vida por litro de sangue bebido.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Metamorfose
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">2PE vira morcego: +2 deslocamento, +4 AGI, HP atual/2, HP máximo -7. Dura 2 cenas. 2 vezes por dia.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        O preço
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Sol: 1d12 de dano (mão 1d4). Prata: fraco por 4 turnos (-3 dano, -2 VIG). Alho: náuseas, veneno 1d4-2/turno. Cruz: medo.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Dentes mortais
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Mordida 1d6. 2PE drena 2L de sangue se alvo não passar teste de VIG. 1 vez por cena.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Pai de família
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">2PE oculta presença por 4 turnos. 2 vezes por dia.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Assassino nato
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">+2 testes sociais. 2PE convence com informação falsa. 2 vezes por cena.</div>
-                </div>
+            <!-- Vampiro -->
+            <div class="raca-item">
+                <span class="raca-nome">Vampiro</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+2 MIN ou FOR, +1 MAG ou AGI</span>, 
+                    <span class="negativo">-3 VIG (dia), -1 FOR ou MIN</span>
+                </span>
             </div>
-
-            <!-- ANÃO -->
-            <div class="raca-card-completo">
-                <h2 class="raca-nome">Anão</h2>
-                <div class="buffs-box">
-                    <div class="buffs-titulo">Bônus/Perdas:</div>
-                    <div class="buffs-valor">
-                        <span class="positivo">+2 FOR ou VIG, +3 MEN</span> | 
-                        <span class="negativo">-3 MAG, -2 AGI</span>
-                    </div>
-                </div>
-                <div class="habilidades-titulo">Habilidades Raciais</div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Cabeça quente
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Quando perde 1/3 da vida, ataca 2 vezes por turno.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Corpo pequeno, mente grande
-                        <span class="habilidade-tipo">Passiva</span>
-                    </div>
-                    <div class="habilidade-desc">Perícia de forja. Altura máxima 163cm.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Ferreiro
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">2PE garante bônus em atributo para arma forjada. 1 vez por dia.</div>
-                </div>
-                <div class="habilidade-item">
-                    <div class="habilidade-nome">
-                        Cachaceiro
-                        <span class="habilidade-tipo">Escolha</span>
-                    </div>
-                    <div class="habilidade-desc">Embriagado: +3 esquiva, defesa, dano; -3 AGI e testes de ataque.</div>
-                </div>
+            <!-- Anão -->
+            <div class="raca-item">
+                <span class="raca-nome">Anão</span>
+                <span class="raca-buffs">
+                    <span class="positivo">+2 FOR ou VIG, +3 MIN</span>, 
+                    <span class="negativo">-3 MAG, -2 AGI</span>
+                </span>
             </div>
         </div>
     </main>
