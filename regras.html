@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livro de Regras - MWC RPG</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .regras-container {
+            display: flex;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .indice-lateral {
+            width: 280px;
+            background: #1a2639;
+            border-radius: 15px;
+            padding: 25px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            border-bottom: 4px solid #4a6fa5;
+        }
+
+        .indice-lateral h2 {
+            color: #ffd700;
+            border-bottom: 2px solid #4a6fa5;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .indice-lista {
+            list-style: none;
+        }
+
+        .indice-item {
+            margin-bottom: 12px;
+        }
+
+        .indice-link {
+            color: #a8c7fa;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .indice-link:hover {
+            background: #0f1a2b;
+            color: #ffd700;
+            border-left-color: #ffd700;
+        }
+
+        .conteudo-regras {
+            flex: 1;
+        }
+
+        .capitulo {
+            background: #1a2639;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #4a6fa5;
+        }
+
+        .capitulo-titulo {
+            color: #ffd700;
+            font-size: 32px;
+            border-bottom: 2px solid #4a6fa5;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+        }
+
+        .secao-titulo {
+            color: #ffd700;
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .secao-titulo i {
+            color: #4a6fa5;
+        }
+
+        .secao-conteudo {
+            color: #ddd;
+            line-height: 1.7;
+            background: #0f1a2b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .secao-conteudo p {
+            margin-bottom: 15px;
+        }
+
+        .secao-conteudo ul, .secao-conteudo ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .secao-conteudo li {
+            margin-bottom: 5px;
+        }
+
+        .destaque {
+            background: #4a6fa5;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            border-left: 4px solid #ffd700;
+            margin: 20px 0;
+        }
+
+        .tabela-atributos {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .tabela-atributos th {
+            background: #4a6fa5;
+            color: #ffd700;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .tabela-atributos td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #4a6fa5;
+        }
+
+        @media (max-width: 900px) {
+            .regras-container {
+                flex-direction: column;
+            }
+            .indice-lateral {
+                width: 100%;
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>M.W.C.</h1>
+            <p>MAGIC WORLD & CREATURES</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="fichas.html">Fichas</a></li>
+                <li><a href="campanhas.html">Campanhas</a></li>
+                <li><a href="racas.html">Raças</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="regras.html" style="background: #4a6fa5; color: #ffd700;">Livro de Regras</a></li>
+                <li><a href="homebrew.html">Homebrew</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="regras-container">
+        <!-- ÍNDICE LATERAL -->
+        <aside class="indice-lateral">
+            <h2>📖 Sumário</h2>
+            <ul class="indice-lista">
+                <li class="indice-item"><a href="#introducao" class="indice-link">1. Introdução</a></li>
+                <li class="indice-item"><a href="#criacao-ficha" class="indice-link">2. Criação da Ficha</a></li>
+                <li class="indice-item"><a href="#combate" class="indice-link">3. Sistema de Combate</a></li>
+                <li class="indice-item"><a href="#defesa" class="indice-link">4. Defesa, Bloqueio e Esquiva</a></li>
+                <li class="indice-item"><a href="#pericias" class="indice-link">5. Perícias</a></li>
+                <li class="indice-item"><a href="#magias" class="indice-link">6. Sistema de Magias</a></li>
+                <li class="indice-item"><a href="#estilos-luta" class="indice-link">7. Estilos de Luta</a></li>
+                <li class="indice-item"><a href="#loot" class="indice-link">8. Loot e Raridades</a></li>
+                <li class="indice-item"><a href="#pocoes" class="indice-link">9. Receitas de Poções</a></li>
+                <li class="indice-item"><a href="#efeitos" class="indice-link">10. Efeitos</a></li>
+                <li class="indice-item"><a href="#encantamentos" class="indice-link">11. Encantamentos</a></li>
+                <li class="indice-item"><a href="#outros" class="indice-link">12. Outros Sistemas</a></li>
+                <li class="indice-item"><a href="#dicas" class="indice-link">13. Dicas para RPG</a></li>
+                <li class="indice-item"><a href="#mestres" class="indice-link">14. Dicas para Mestres</a></li>
+            </ul>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo-regras">
+            <!-- CAPÍTULO 1 - INTRODUÇÃO -->
+            <section id="introducao" class="capitulo">
+                <h1 class="capitulo-titulo">1. Introdução</h1>
+                <div class="secao-conteudo">
+                    <p><strong>MWC - Magic World and Creatures</strong> é um RPG de mundo aberto no qual os players possuem possibilidades quase infinitas de ações dentro desse mundo. A sociedade não avançou como no nosso mundo, ainda se encontra numa época quase medieval. Neste mundo, raças inteligentes existem, como Elfos, Golens e diversas outras, possuindo também um sistema de Ranks dentro das guildas e diversas possibilidades escondidas e misteriosas.</p>
+                    <p>Antes de criar sua ficha, leia atentamente todo o livro. Suas escolhas definem a jornada!</p>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 2 - CRIAÇÃO DA FICHA -->
+            <section id="criacao-ficha" class="capitulo">
+                <h1 class="capitulo-titulo">2. Criação da Ficha</h1>
+                <div class="secao-conteudo">
+                    <p>Para criar uma ficha dentro do mundo de MWC, siga os passos abaixo:</p>
+                    <ol>
+                        <li><strong>Escolha uma raça:</strong> Cada raça concede bônus e penalidades em atributos, além de habilidades raciais únicas.</li>
+                        <li><strong>Defina idade, nome e sexo:</strong> A idade não afeta mecânicas (considera-se jovem-adulto), mas enriquece a história.</li>
+                        <li><strong>Elabore uma história:</strong> Passado, acontecimentos trágicos, momentos bons, feitos. O mestre pode conceder bônus baseado nela.</li>
+                        <li><strong>Informações pessoais:</strong> Gostos, hobbies, comida favorita, pais, etc.</li>
+                        <li><strong>Distribuição de atributos:</strong> Você tem <strong>10 pontos</strong> para distribuir entre FOR, VIG, AGI, MEN, MAG. Os bônus/penalidades da raça são aplicados automaticamente. Atributo 0 impede certas ações.</li>
+                        <li><strong>Atributos derivados:</strong> HP = 10 + (VIG × 5). Carga, deslocamento, defesa, bloqueio e esquiva são calculados conforme regras.</li>
+                        <li><strong>Perícias:</strong> A cada 2 pontos em um atributo, você recebe 1 perícia relacionada.</li>
+                        <li><strong>Classe:</strong> Inicialmente Mundano. Após treino, pode escolher uma classe e subclasse.</li>
+                        <li><strong>Habilidades:</strong> Você recebe habilidades passivas e uma de escolha por raça, classe e subclasse.</li>
+                    </ol>
+                    <div class="destaque">
+                        <strong>HP base:</strong> 20? Verifique no seu texto: "Os pontos de Hp começam em 20!". Adotamos 10 + VIG×5, mas fica a seu critério. Sugiro manter 20 + VIG×5 ou 10 + VIG×5. Ajuste conforme preferir.
+                    </div>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 3 - SISTEMA DE COMBATE -->
+            <section id="combate" class="capitulo">
+                <h1 class="capitulo-titulo">3. Sistema de Combate</h1>
+                <div class="secao-conteudo">
+                    <p><strong>Iniciativa:</strong> Rolagem de dados + perícia de Iniciativa (AGI). Ordem do maior para o menor.</p>
+                    <p><strong>Tipos de ação:</strong></p>
+                    <ul>
+                        <li><strong>Ação padrão:</strong> Atacar, correr, pegar objetos, falar, esquivar, bloquear, etc.</li>
+                        <li><strong>Ação de movimento:</strong> Locomoção (andar, correr, pular, pegar objetos).</li>
+                        <li><strong>Ação de reação:</strong> Ocorre quando o alvo não esquiva/bloqueia e o ataque erra; pode contra-atacar ou usar rituais específicos.</li>
+                        <li><strong>Ação livre:</strong> Falar, comer, pegar coisas muito próximas.</li>
+                    </ul>
+                    <p><strong>Sistema de combos:</strong> Players podem dar mais de um ataque por turno, mas a DT do segundo golpe é maior. Caso erre o segundo golpe, perde o próximo turno. Por 2PE, a DT do segundo golpe se mantém igual.</p>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 4 - DEFESA, BLOQUEIO E ESQUIVA -->
+            <section id="defesa" class="capitulo">
+                <h1 class="capitulo-titulo">4. Defesa, Bloqueio e Esquiva</h1>
+                <div class="secao-conteudo">
+                    <ul>
+                        <li><strong>Defesa:</strong> Valor que o dado de ataque deve superar para acertar. Influenciada por AGI e perícia Reflexo.</li>
+                        <li><strong>Bloqueio:</strong> Valor reduzido do dano ao escolher bloquear. Influenciado por perícias Fortitude e Bloqueio.</li>
+                        <li><strong>Esquiva:</strong> Aumenta o valor exigido no dado para acertar. Perícia Reflexo soma +5 à esquiva.</li>
+                        <li><strong>Resistência:</strong> Redução de dano passiva, influenciada por armaduras, encantamentos e poções.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 5 - PERÍCIAS -->
+            <section id="pericias" class="capitulo">
+                <h1 class="capitulo-titulo">5. Perícias</h1>
+                <div class="secao-conteudo">
+                    <p>Perícias não acrescentam valores aos dados, mas reduzem a DT dos testes pedidos.</p>
+                    <table class="tabela-atributos">
+                        <tr><th>Atributo</th><th>Perícias</th></tr>
+                        <tr><td>FOR</td><td>Luta, Atletismo, Acrobacia</td></tr>
+                        <tr><td>VIG</td><td>Defesa, Resistência, Vontade</td></tr>
+                        <tr><td>AGI</td><td>Reflexos, Furtividade, Crime, Pontaria, Iniciativa</td></tr>
+                        <tr><td>MEN</td><td>Intuição, Percepção, Investigação, Forja, Ocultismo, Aprendizado, Diplomacia, Medicina, Vontade, Sobrevivência, Linguagens, Enganação, Melhoria, Tática</td></tr>
+                        <tr><td>MAG</td><td>Conjuração, Manipulação, Rituais, Cura, Alquimia, Encantamento, Feitiçaria</td></tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 6 - SISTEMA DE MAGIAS -->
+            <section id="magias" class="capitulo">
+                <h1 class="capitulo-titulo">6. Sistema de Magias</h1>
+                <div class="secao-conteudo">
+                    <p><strong>Afinidade elemental:</strong> Fogo, Água, Terra, Ar, Cura (magias iniciais).</p>
+                    <p><strong>Tiers:</strong> Representam o nível da magia. Ao treinar, o tier sobe, permitindo maior controle e poder. Não há limite de tiers.</p>
+                    <p><strong>Outras formas de magia:</strong> Invocar criaturas, encantar objetos, criar poções, usar cadáveres, magias de sangue, natureza, cristal, etc. Essas não são aprendidas naturalmente, exigem descoberta ou ensino especial.</p>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 7 - ESTILOS DE LUTA -->
+            <section id="estilos-luta" class="capitulo">
+                <h1 class="capitulo-titulo">7. Estilos de Luta</h1>
+                <div class="secao-conteudo">
+                    <p>Estilos de luta demonstram como o player luta sem armas. Cada estilo tem buffs e debuffs.</p>
+                    <ul>
+                        <li><strong>Natural:</strong> Soco 1d4+FOR, Chute 1d4+2+FOR, Cotovelada 1d6-1, Joelhada 1d6.</li>
+                        <li><strong>Chut style:</strong> Apenas chutes, com maestria: Chute 1d6+FOR.</li>
+                        <li><strong>Mana bust:</strong> Embutir mana em ataques: +3 de dano extra, consome mana por turno. Só para quem tem mana.</li>
+                        <li><strong>Beast mode:</strong> Lutar como criatura: Arranhar 1d6, Morder 1d8. Só para quem tem garras e presas.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 8 - LOOT E RARIDADES -->
+            <section id="loot" class="capitulo">
+                <h1 class="capitulo-titulo">8. Loot e Raridades</h1>
+                <div class="secao-conteudo">
+                    <p><strong>Raridades:</strong> Comum, Incomum, Raro, Épico, Lendário, Mítico.</p>
+                    <p><strong>Entidades (criaturas):</strong></p>
+                    <ul>
+                        <li>Comum: 84% comum, 16% incomum</li>
+                        <li>Incomum: 72% incomum, 27% comum, 1% raro</li>
+                        <li>Raro: 55% raro, 20% incomum, 15% comum, 10% épico</li>
+                        <li>Épico: 40% épico, 30% raro, 20% incomum, 5% comum, 5% lendário</li>
+                        <li>Lendário: 51% lendário, 39% épico, 10% mítico</li>
+                        <li>Mítico: 50% lendário, 50% mítico</li>
+                    </ul>
+                    <p><strong>Baús:</strong> Percentuais similares, ligeiramente diferentes (vide livro completo).</p>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 9 - RECEITAS DE POÇÕES -->
+            <section id="pocoes" class="capitulo">
+                <h1 class="capitulo-titulo">9. Receitas de Poções</h1>
+                <div class="secao-conteudo">
+                    <ul>
+                        <li><strong>Poção de cura:</strong> Erva de lils x1, folha de eucalipto x1, extrato de mana → cura 1d4 de vida.</li>
+                        <li><strong>Poção de mana:</strong> Erva de mastri x2, pele de monstro x1, extrato de mana → recupera 1d6 de mana.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 10 - EFEITOS -->
+            <section id="efeitos" class="capitulo">
+                <h1 class="capitulo-titulo">10. Efeitos</h1>
+                <div class="secao-conteudo">
+                    <ul>
+                        <li><strong>Bêbado:</strong> -5 em testes. Se dormir, recebe Ressaca. Contato com frio reduz para -3.</li>
+                        <li><strong>Ressaca:</strong> -2 em todos os testes, -3 em testes de Mente.</li>
+                        <li><strong>Fraqueza:</strong> -3 de dano em ataques corpo a corpo, -3 de vigor.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 11 - ENCANTAMENTOS -->
+            <section id="encantamentos" class="capitulo">
+                <h1 class="capitulo-titulo">11. Encantamentos</h1>
+                <div class="secao-conteudo">
+                    <p>Encantamentos são extensões da magia em itens. Adicionam efeitos aos itens.</p>
+                    <ul>
+                        <li><strong>Passivos:</strong> Custo diário de mana.</li>
+                        <li><strong>Ativos:</strong> Custo de mana para ativar + PE para usar a habilidade.</li>
+                    </ul>
+                    <p><strong>Exemplo:</strong> Twim Impact - Custo 10 de mana, ativo por uma cena. Por 2PE, o dano de um ataque é multiplicado por 2.</p>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 12 - OUTROS SISTEMAS -->
+            <section id="outros" class="capitulo">
+                <h1 class="capitulo-titulo">12. Outros Sistemas</h1>
+                <div class="secao-conteudo">
+                    <p><strong>Sistema de história:</strong> Sua história será analisada pelo mestre para decidir bônus, debuffs, itens, classes etc.</p>
+                    <p><strong>Sistema de MVP:</strong> Quem causar mais dano em uma criatura recebe 25% a mais de XP.</p>
+                    <p><strong>Sistema de Lvl:</strong> Níveis não são visíveis para os personagens. Upgrades em pontos são instantâneos para players, mas para NPCs são graduais. Para colocar 1 ponto de atributo, é necessário treinamento.</p>
+                    <p><strong>Sistema de fome e sede:</strong> Sem comer/beber por 24h, recebe debuffs até se reabastecer.</p>
+                    <p><strong>Carga:</strong> Começa com 1 de carga. A cada ponto em FOR, ganha +1 carga. Após o primeiro ponto, cada ponto adicional dá +2 carga. Itens possuem valor de carga. Sobrecarga = lentidão.</p>
+                    <p><strong>Deslocamento:</strong> Padrão 9m/min. Modificado por AGI (0 ou menos reduz; alto aumenta).</p>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 13 - DICAS PARA RPG -->
+            <section id="dicas" class="capitulo">
+                <h1 class="capitulo-titulo">13. Dicas para RPG</h1>
+                <div class="secao-conteudo">
+                    <ul>
+                        <li>Crie uma história para seu personagem (infância, gostos, eventos bons e trágicos). Não precisa ser complexa, mas ajuda o mestre a dar bônus.</li>
+                        <li>Escolha personalidades que você consiga interpretar. Se é tímido, evite criar um personagem extremamente extrovertido.</li>
+                        <li>Anote os acontecimentos no verso da ficha. Não é obrigação do mestre gravar tudo.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CAPÍTULO 14 - DICAS PARA MESTRES -->
+            <section id="mestres" class="capitulo">
+                <h1 class="capitulo-titulo">14. Dicas para Mestres</h1>
+                <div class="secao-conteudo">
+                    <p>MWC é um sistema livre para as escolhas dos players e do mestre. Tudo pode mudar dependendo das decisões do mestre. Este livro ainda não contém tudo sobre o sistema – existem segredos que serão revelados conforme os players avançam.</p>
+                    <p>Use sua criatividade para expandir o mundo!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Feito com ❤️ por Pedro</p>
+    </footer>
+</body>
+</html>
