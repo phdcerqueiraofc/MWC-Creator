@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes - MWC RPG</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .classes-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(10, 15, 30, 0.9), rgba(20, 30, 50, 0.9));
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .classes-header h1 {
+            color: #ffd700;
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .classes-header p {
+            color: #a8c7fa;
+            font-size: 18px;
+        }
+
+        .classe-card {
+            background: #1a2639;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #4a6fa5;
+        }
+
+        .classe-nome {
+            color: #ffd700;
+            font-size: 28px;
+            border-bottom: 2px solid #4a6fa5;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .classe-desc {
+            color: #ddd;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .buffs-classe {
+            background: #0f1a2b;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffd700;
+        }
+
+        .subclasses-titulo {
+            color: #ffd700;
+            font-size: 20px;
+            margin: 20px 0 10px;
+        }
+
+        .subclasses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .subclasse-item {
+            background: #0f1a2b;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #4a6fa5;
+        }
+
+        .subclasse-nome {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .subclasse-desc {
+            color: #a8c7fa;
+            font-size: 14px;
+        }
+
+        .itens-iniciais {
+            background: #0f1a2b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .itens-iniciais h4 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .item-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .item-tag {
+            background: #4a6fa5;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>M.W.C.</h1>
+            <p>MAGIC WORLD & CREATURES</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="fichas.html">Fichas</a></li>
+                <li><a href="campanhas.html">Campanhas</a></li>
+                <li><a href="racas.html">Raças</a></li>
+                <li><a href="classes.html" style="background: #4a6fa5; color: #ffd700;">Classes</a></li>
+                <li><a href="regras.html">Livro de Regras</a></li>
+                <li><a href="homebrew.html">Homebrew</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <div class="classes-header">
+            <h1>Classes de MWC</h1>
+            <p>8 classes com sub-classes únicas para personalizar seu personagem</p>
+        </div>
+
+        <!-- MUNDANO -->
+        <div class="classe-card">
+            <h2 class="classe-nome">Mundano</h2>
+            <div class="classe-desc">
+                Pessoas sem classe, sem nada de especial. Podem ser treinados em alguma classe, mas enquanto isso possuem habilidades temporárias.
+            </div>
+            <div class="buffs-classe">
+                <strong style="color: #ffd700;">Bônus:</strong> Nenhum
+            </div>
+            <h3 class="subclasses-titulo">Habilidades</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">2% De tudo</div>
+                    <div class="subclasse-desc">Gaste 2PE para receber +2 em qualquer teste. *escolha</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Reconhecido</div>
+                    <div class="subclasse-desc">Fez algo marcante para a vila, +2/-2 em testes com aldeões. *escolha</div>
+                </div>
+            </div>
+            <h3 class="subclasses-titulo">Sub-classes</h3>
+            <div class="subclasse-item">
+                <div class="subclasse-nome">Nenhuma</div>
+                <div class="subclasse-desc">Mundano não possui sub-classes.</div>
+            </div>
+            <div class="itens-iniciais">
+                <h4>Itens Iniciais</h4>
+                <div class="item-lista">
+                    <span class="item-tag">Nenhum item específico</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GUERREIRO -->
+        <div class="classe-card">
+            <h2 class="classe-nome">Guerreiro</h2>
+            <div class="classe-desc">
+                Pessoa com habilidades de combate físico e execução de movimento corpo a corpo.
+            </div>
+            <div class="buffs-classe">
+                <strong style="color: #ffd700;">Bônus:</strong> Nenhum bônus de atributo, mas possui habilidades de combate.
+            </div>
+            <h3 class="subclasses-titulo">Habilidades</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Combo</div>
+                    <div class="subclasse-desc">Gaste 1PE para atacar novamente, multiplica por 2 o número de PE na próxima rodada. *escolha</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Preciso</div>
+                    <div class="subclasse-desc">Gaste 6PE para acertar um ponto crítico causando +1 dado de dano do mesmo tipo. *escolha</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Muralha</div>
+                    <div class="subclasse-desc">Gaste 3PE para reduzir o dano em 4. *escolha</div>
+                </div>
+            </div>
+            <h3 class="subclasses-titulo">Sub-classes</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Ladino</div>
+                    <div class="subclasse-desc">Mão leve: pode gastar 2PE para pegar um item leve.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Assassino</div>
+                    <div class="subclasse-desc">Mestre em matar silenciosamente: 2PE para ataque furtivo.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Mestre com armas</div>
+                    <div class="subclasse-desc">+2 em testes de ataque com qualquer arma corpo a corpo.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Artista Marcial</div>
+                    <div class="subclasse-desc">Causa +1 dado de dano do mesmo tipo quando ataca sem armas.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Beserker</div>
+                    <div class="subclasse-desc">Mestre de armas rápidas: ataca 2 vezes por turno com elas.</div>
+                </div>
+            </div>
+            <div class="itens-iniciais">
+                <h4>Itens Iniciais</h4>
+                <div class="item-lista">
+                    <span class="item-tag">Espada (car=1, 1d8)</span>
+                    <span class="item-tag">Machado (car=1, 1d8)</span>
+                    <span class="item-tag">Machado de guerra (car=2, 1d8+2)</span>
+                    <span class="item-tag">Marreta (car=2, 1d6+FOR)</span>
+                    <span class="item-tag">Porrete (car=1, 1d6)</span>
+                    <span class="item-tag">Bastão (car=1, 1d6)</span>
+                    <span class="item-tag">Nunchaku (car=1, 1d6+FOR)</span>
+                    <span class="item-tag">Lança (car=1, 1d8)</span>
+                    <span class="item-tag">Adaga (car=0, 1d4+2)</span>
+                    <span class="item-tag">Punhal (car=0, 1d4+FOR)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARQUEIRO -->
+        <div class="classe-card">
+            <h2 class="classe-nome">Arqueiro</h2>
+            <div class="classe-desc">
+                Pessoas com habilidade com armas de longo e médio alcance.
+            </div>
+            <div class="buffs-classe">
+                <strong style="color: #ffd700;">Bônus:</strong> Pode escolher 1 arma de longo/médio alcance.
+            </div>
+            <h3 class="subclasses-titulo">Habilidades</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">+2</div>
+                    <div class="subclasse-desc">Gaste 2PE para disparar mais 2 flechas.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Flecha mágica</div>
+                    <div class="subclasse-desc">Se tiver afinidade elemental, gaste 1PE para flecha dessa magia.</div>
+                </div>
+            </div>
+            <h3 class="subclasses-titulo">Sub-classes</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Sniper</div>
+                    <div class="subclasse-desc">+2 em testes de pontaria.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Artilharia de frente</div>
+                    <div class="subclasse-desc">Saca arma como ação livre, dispara 2 balas por cena.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Metralhadora</div>
+                    <div class="subclasse-desc">Gaste 1PE para atirar +1 bala no mesmo turno, custo multiplica a cada disparo.</div>
+                </div>
+            </div>
+            <div class="itens-iniciais">
+                <h4>Itens Iniciais</h4>
+                <div class="item-lista">
+                    <span class="item-tag">Arco (car=1, 1d8)</span>
+                    <span class="item-tag">Besta (car=2, 1d10)</span>
+                    <span class="item-tag">Estilingue (car=1, 1d4)</span>
+                    <span class="item-tag">Arpão (car=2, 1d6+2)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAGO -->
+        <div class="classe-card">
+            <h2 class="classe-nome">Mago</h2>
+            <div class="classe-desc">
+                Pessoa treinada em utilizar magias.
+            </div>
+            <div class="buffs-classe">
+                <strong style="color: #ffd700;">Bônus:</strong> Recebe 1 magia elemental e pode escolher entre grimório, cajado ou cristal.
+            </div>
+            <h3 class="subclasses-titulo">Habilidades</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Controle e manipulação</div>
+                    <div class="subclasse-desc">Capacidade de controlar e manipular magias.</div>
+                </div>
+            </div>
+            <h3 class="subclasses-titulo">Sub-classes</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Summoner</div>
+                    <div class="subclasse-desc">Pode invocar criaturas.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Necromante</div>
+                    <div class="subclasse-desc">Extrai alma de seres mortos, pode manter um preferido salvo.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Alquimista</div>
+                    <div class="subclasse-desc">Criador de poções.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Manipulador</div>
+                    <div class="subclasse-desc">Manipula elementos da natureza.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Conjurador</div>
+                    <div class="subclasse-desc">Conjura elementos.</div>
+                </div>
+            </div>
+            <div class="itens-iniciais">
+                <h4>Itens Iniciais</h4>
+                <div class="item-lista">
+                    <span class="item-tag">Cajado (car=1, Poder de fogo)</span>
+                    <span class="item-tag">Grimório (car=1, Execução rápida)</span>
+                    <span class="item-tag">Cristal (car=1, Poder de fogo)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CURANDEIRO -->
+        <div class="classe-card">
+            <h2 class="classe-nome">Curandeiro</h2>
+            <div class="classe-desc">
+                Pessoa treinada em medicina e magias de cura.
+            </div>
+            <div class="buffs-classe">
+                <strong style="color: #ffd700;">Bônus:</strong> Recebe uma magia de cura + kits de primeiros socorros.
+            </div>
+            <h3 class="subclasses-titulo">Habilidades</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Curar pessoas</div>
+                    <div class="subclasse-desc">Capacidade de curar aliados.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Auxiliar pessoas</div>
+                    <div class="subclasse-desc">Pode auxiliar em testes de medicina e sobrevivência.</div>
+                </div>
+            </div>
+            <h3 class="subclasses-titulo">Sub-classes</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Médico geral</div>
+                    <div class="subclasse-desc">+2 em qualquer teste de cura.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Bom com poções</div>
+                    <div class="subclasse-desc">Sabe produzir poções de cura.</div>
+                </div>
+            </div>
+            <div class="itens-iniciais">
+                <h4>Itens Iniciais</h4>
+                <div class="item-lista">
+                    <span class="item-tag">Kit de primeiros socorros</span>
+                    <span class="item-tag">Poção de cura simples (1d4)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SÁBIO -->
+        <div class="classe-card">
+            <h2 class="classe-nome">Sábio</h2>
+            <div class="classe-desc">
+                Pessoa intelectual, sábia e boa de lábia.
+            </div>
+            <div class="buffs-classe">
+                <strong style="color: #ffd700;">Bônus:</strong> Ganha um livro de auxílio que dá bônus de MEN em testes (depende do mestre).
+            </div>
+            <h3 class="subclasses-titulo">Habilidades</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Diplomacia</div>
+                    <div class="subclasse-desc">Habilidade em negociações e acordos.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Convencimento</div>
+                    <div class="subclasse-desc">Capacidade de persuadir pessoas.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Intimidação intelectual</div>
+                    <div class="subclasse-desc">Usa conhecimento para intimidar.</div>
+                </div>
+            </div>
+            <h3 class="subclasses-titulo">Sub-classes</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Bardo</div>
+                    <div class="subclasse-desc">Bom de lábia: 2PE para convencer alguém.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Especialista</div>
+                    <div class="subclasse-desc">Conhecimentos gerais: 2PE para receber informações sobre algo.</div>
+                </div>
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Monge</div>
+                    <div class="subclasse-desc">Refrator: 2PE para devolver o dano recebido.</div>
+                </div>
+            </div>
+            <div class="itens-iniciais">
+                <h4>Itens Iniciais</h4>
+                <div class="item-lista">
+                    <span class="item-tag">Livro (car=1, +MEN)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BÁRBARO -->
+        <div class="classe-card">
+            <h2 class="classe-nome">Bárbaro</h2>
+            <div class="classe-desc">
+                Não precisa de treinamento, apenas saber lutar já é suficiente.
+            </div>
+            <div class="buffs-classe">
+                <strong style="color: #ffd700;">Bônus:</strong> +2 em testes de ataque brutos.
+            </div>
+            <h3 class="subclasses-titulo">Habilidades</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Fúria</div>
+                    <div class="subclasse-desc">Entra em estado de fúria, ganhando bônus em dano e resistência.</div>
+                </div>
+            </div>
+            <div class="itens-iniciais">
+                <h4>Itens Iniciais</h4>
+                <div class="item-lista">
+                    <span class="item-tag">Porrete (car=2, 1d6+FOR)</span>
+                    <span class="item-tag">Bastão (car=2, 1d4+FOR)</span>
+                    <span class="item-tag">Facão (car=1, 1d8)</span>
+                    <span class="item-tag">Soqueira (car=1, 2d6)</span>
+                    <span class="item-tag">Manoplas (car=3, 2d8)</span>
+                    <span class="item-tag">Lanças (car=2, 1d6)</span>
+                    <span class="item-tag">Machado de guerra (car=2, 1d8+2)</span>
+                    <span class="item-tag">Marreta (car=2, 1d6+FOR)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARDO -->
+        <div class="classe-card">
+            <h2 class="classe-nome">Bardo</h2>
+            <div class="classe-desc">
+                Pessoa que consegue ajudar o grupo, encorajando-os e aliviando a tensão.
+            </div>
+            <div class="buffs-classe">
+                <strong style="color: #ffd700;">Bônus:</strong> +2 em qualquer teste social. Pode tocar músicas e fazer magias de suporte (aumenta dano e HP).
+            </div>
+            <h3 class="subclasses-titulo">Habilidades</h3>
+            <div class="subclasses-grid">
+                <div class="subclasse-item">
+                    <div class="subclasse-nome">Encorajar</div>
+                    <div class="subclasse-desc">Por 2PE, faz com que um player refaça seu último teste falho.</div>
+                </div>
+            </div>
+            <div class="itens-iniciais">
+                <h4>Itens Iniciais</h4>
+                <div class="item-lista">
+                    <span class="item-tag">Livro (car=1, +Mente)</span>
+                    <span class="item-tag">Instrumento musical (car=1/3, Encorajar)</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Feito com ❤️ por Pedro</p>
+    </footer>
+</body>
+</html>
