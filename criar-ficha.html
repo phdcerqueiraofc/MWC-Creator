@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Ficha - MWC RPG</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ESTILOS EXCLUSIVOS DO CRIADOR */
+        .criador-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .progresso {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .progresso::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #1a2639;
+            z-index: 1;
+        }
+
+        .etapa {
+            background: #1a2639;
+            padding: 15px 25px;
+            border-radius: 30px;
+            color: #a8c7fa;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            border: 2px solid #0a0f1e;
+        }
+
+        .etapa.ativa {
+            background: #4a6fa5;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+
+        .painel-criador {
+            background: #1a2639;
+            border-radius: 15px;
+            padding: 40px;
+            border-bottom: 4px solid #4a6fa5;
+        }
+
+        .titulo-painel {
+            color: #ffd700;
+            font-size: 32px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #4a6fa5;
+            padding-bottom: 15px;
+        }
+
+        .subtitulo {
+            color: #a8c7fa;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .grid-racas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .raca-card {
+            background: #0f1a2b;
+            border: 2px solid #4a6fa5;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .raca-card:hover {
+            border-color: #ffd700;
+            transform: translateY(-5px);
+        }
+
+        .raca-card.selecionada {
+            background: #4a6fa5;
+            border-color: #ffd700;
+        }
+
+        .raca-card.selecionada h4 {
+            color: #ffd700;
+        }
+
+        .raca-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .raca-card p {
+            color: #a8c7fa;
+            font-size: 12px;
+        }
+
+        .buffs-info {
+            background: #0f1a2b;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #ffd700;
+        }
+
+        .buffs-info h5 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .buffs-list {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .buff-item {
+            background: #1a2639;
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: #4a6fa5;
+        }
+
+        .buff-item.positivo {
+            color: #4CAF50;
+        }
+
+        .buff-item.negativo {
+            color: #f44336;
+        }
+
+        .form-grupo {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            color: #a8c7fa;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: #0f1a2b;
+            border: 2px solid #4a6fa5;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-input:focus {
+            border-color: #ffd700;
+            outline: none;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            background: #0f1a2b;
+            border: 2px solid #4a6fa5;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .atributos-container {
+            background: #0f1a2b;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .pontos-restantes {
+            background: #4a6fa5;
+            color: #ffd700;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .atributo-linha {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #1a2639;
+            border-radius: 8px;
+        }
+
+        .atributo-nome {
+            width: 80px;
+            font-weight: bold;
+            color: #ffd700;
+            font-size: 18px;
+        }
+
+        .atributo-desc {
+            width: 120px;
+            color: #a8c7fa;
+            font-size: 14px;
+        }
+
+        .atributo-raca {
+            color: #4CAF50;
+            font-size: 14px;
+            width: 100px;
+        }
+
+        .atributo-raca.negativo {
+            color: #f44336;
+        }
+
+        .atributo-controle {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .atributo-botao {
+            background: #4a6fa5;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .atributo-botao:hover {
+            background: #ffd700;
+            color: #0a0f1e;
+        }
+
+        .atributo-valor {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .atributo-total {
+            margin-left: auto;
+            font-size: 20px;
+            color: #ffd700;
+        }
+
+        .navegacao-botoes {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .btn-nav {
+            background: #4a6fa5;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-nav:hover {
+            background: #ffd700;
+            color: #0a0f1e;
+        }
+
+        .btn-nav.secondary {
+            background: #1a2639;
+            color: #a8c7fa;
+        }
+
+        .habilidades-lista {
+            margin-top: 30px;
+        }
+
+        .habilidade-item {
+            background: #0f1a2b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4a6fa5;
+        }
+
+        .habilidade-nome {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .habilidade-desc {
+            color: #ddd;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .habilidade-tipo {
+            display: inline-block;
+            background: #4a6fa5;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>M.W.C.</h1>
+            <p>MAGIC WORLD & CREATURES</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="fichas.html">Fichas</a></li>
+                <li><a href="campanhas.html">Campanhas</a></li>
+                <li><a href="racas.html">Raças</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="regras.html">Livro de Regras</a></li>
+                <li><a href="homebrew.html">Homebrew</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="criador-container">
+        <!-- BARRA DE PROGRESSO -->
+        <div class="progresso">
+            <div class="etapa ativa">1. Raça</div>
+            <div class="etapa">2. Informações</div>
+            <div class="etapa">3. Atributos</div>
+            <div class="etapa">4. Classe</div>
+            <div class="etapa">5. Perícias</div>
+            <div class="etapa">6. Habilidades</div>
+        </div>
+
+        <!-- PAINEL ATUAL: ESCOLHA DE RAÇA -->
+        <div class="painel-criador" id="painel-raca">
+            <h2 class="titulo-painel">Escolha uma Raça</h2>
+            <p class="subtitulo">Cada raça oferece bônus e penalidades únicas. Escolha com sabedoria!</p>
+
+            <!-- GRADE DE RAÇAS -->
+            <div class="grid-racas">
+                <!-- HUMANOS -->
+                <div class="raca-card" onclick="selecionarRaca('humano')">
+                    <h4>Humano</h4>
+                    <p>Versáteis e adaptáveis</p>
+                </div>
+                <!-- ELFOS -->
+                <div class="raca-card" onclick="selecionarRaca('elfo')">
+                    <h4>Elfo</h4>
+                    <p>Sábios e mágicos</p>
+                </div>
+                <!-- ELFO ALTO -->
+                <div class="raca-card" onclick="selecionarRaca('elfo-alto')">
+                    <h4>Elfo Alto</h4>
+                    <p>Ágeis e resistentes</p>
+                </div>
+                <!-- ELFO NEGRO -->
+                <div class="raca-card" onclick="selecionarRaca('elfo-negro')">
+                    <h4>Elfo Negro</h4>
+                    <p>Sobreviventes natos</p>
+                </div>
+                <!-- ANJO -->
+                <div class="raca-card" onclick="selecionarRaca('anjo')">
+                    <h4>Anjo</h4>
+                    <p>Seres celestiais</p>
+                </div>
+                <!-- DEMÔNIO -->
+                <div class="raca-card" onclick="selecionarRaca('demonio')">
+                    <h4>Demônio</h4>
+                    <p>Criaturas das trevas</p>
+                </div>
+                <!-- ORC -->
+                <div class="raca-card" onclick="selecionarRaca('orc')">
+                    <h4>Orc</h4>
+                    <p>Força bruta</p>
+                </div>
+                <!-- GOLEM -->
+                <div class="raca-card" onclick="selecionarRaca('golem')">
+                    <h4>Golem</h4>
+                    <p>Resistência absoluta</p>
+                </div>
+                <!-- DRACONÍDEO -->
+                <div class="raca-card" onclick="selecionarRaca('draconideo')">
+                    <h4>Draconídeo</h4>
+                    <p>Sangue de dragão</p>
+                </div>
+                <!-- FADA ALTA -->
+                <div class="raca-card" onclick="selecionarRaca('fada-alta')">
+                    <h4>Fada Alta</h4>
+                    <p>Magia e encanto</p>
+                </div>
+                <!-- FADA -->
+                <div class="raca-card" onclick="selecionarRaca('fada')">
+                    <h4>Fada</h4>
+                    <p>Minúsculas e ágeis</p>
+                </div>
+                <!-- TRITÃO -->
+                <div class="raca-card" onclick="selecionarRaca('tritao')">
+                    <h4>Tritão</h4>
+                    <p>Senhores dos mares</p>
+                </div>
+                <!-- BESTA -->
+                <div class="raca-card" onclick="selecionarRaca('besta')">
+                    <h4>Besta</h4>
+                    <p>Instinto selvagem</p>
+                </div>
+                <!-- GOBLIN -->
+                <div class="raca-card" onclick="selecionarRaca('goblin')">
+                    <h4>Goblin</h4>
+                    <p>Ágeis e gananciosos</p>
+                </div>
+                <!-- VAMPIRO -->
+                <div class="raca-card" onclick="selecionarRaca('vampiro')">
+                    <h4>Vampiro</h4>
+                    <p>Criaturas da noite</p>
+                </div>
+                <!-- ANÃO -->
+                <div class="raca-card" onclick="selecionarRaca('anao')">
+                    <h4>Anão</h4>
+                    <p>Mestres da forja</p>
+                </div>
+            </div>
+
+            <!-- INFORMAÇÕES DA RAÇA SELECIONADA (DINÂMICO) -->
+            <div id="info-raca" style="display: none;">
+                <!-- Será preenchido via JavaScript -->
+            </div>
+
+            <!-- BOTÕES DE NAVEGAÇÃO -->
+            <div class="navegacao-botoes">
+                <a href="fichas.html" class="btn-nav secondary">Voltar</a>
+                <button class="btn-nav" onclick="proximaEtapa('informacoes')">Próximo ></button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Feito com ❤️ por Pedro</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // SISTEMA DE CRIAÇÃO DE FICHAS MWC
+        // ============================================
+        
+        // BANCO DE DADOS DAS RAÇAS (BASEADO NO SEU LIVRO)
+        const racas = {
+            humano: {
+                nome: "Humano",
+                buffs: "Sem bônus ou penalidades",
+                modificadores: { for: 0, vig: 0, agi: 0, men: 0, mag: 0 },
+                habilidades: [
+                    { nome: "Simplicidade", tipo: "escolha", desc: "Gaste 2PE para receber uma dica sobre a situação, 1 vez por cena." },
+                    { nome: "Trabalhador", tipo: "escolha", desc: "Gaste 2PE para +1 em FOR, AGI, VIG por 4 turnos, ou 5PE por toda cena." },
+                    { nome: "Aprendiz", tipo: "passiva", desc: "Dedique 2h/dia em treino para ganhar 1 ponto de atributo permanente." }
+                ]
+            },
+            elfo: {
+                nome: "Elfo",
+                buffs: "+1 MEN, +1 MAG | -1 FOR, -1 VIG",
+                modificadores: { for: -1, vig: -1, agi: 0, men: 1, mag: 1 },
+                habilidades: [
+                    { nome: "Estudioso", tipo: "escolha", desc: "Gaste PE para aprender informação sobre algo, 1x/cena." },
+                    { nome: "Observador", tipo: "escolha", desc: "Ação completa para analisar algo/alguém, 1x/cena." },
+                    { nome: "Amigo da natureza", tipo: "passiva", desc: "Conhece plantas, ervas e animais (HP e efeitos)." }
+                ]
+            },
+            "elfo-alto": {
+                nome: "Elfo Alto",
+                buffs: "+1 VIG, +1 AGI | -1 FOR, -1 MEN",
+                modificadores: { for: -1, vig: 1, agi: 1, men: -1, mag: 0 },
+                habilidades: [
+                    { nome: "Corredor", tipo: "escolha", desc: "Gaste 2PE para +1 AGI por 1 cena." },
+                    { nome: "Escudo", tipo: "escolha", desc: "Gaste 2PE para anular 2 de dano." },
+                    { nome: "Social", tipo: "passiva", desc: "Habilidade em convencer, enganar e acalmar." }
+                ]
+            },
+            "elfo-negro": {
+                nome: "Elfo Negro",
+                buffs: "+1 VIG, +1 AGI | -1 MEN, -1 MAG",
+                modificadores: { for: 0, vig: 1, agi: 1, men: -1, mag: -1 },
+                habilidades: [
+                    { nome: "Resistente", tipo: "escolha", desc: "Gaste 2PE para -3 de dano recebido, 3x/cena." },
+                    { nome: "Veterano de guerra", tipo: "escolha", desc: "Gaste 2PE para criar plano de guerra, 2x/cena." },
+                    { nome: "Sobrevivente", tipo: "passiva", desc: "Conhece perigos da natureza e como sobreviver." }
+                ]
+            },
+            anjo: {
+                nome: "Anjo",
+                buffs: "+1 MAG e +1 MEN ou +1 AGI | -1 FOR, -1 VIG",
+                modificadores: { for: -1, vig: -1, agi: 1, men: 1, mag: 1 }, // Exemplo: escolha AGI e MEN
+                habilidades: [
+                    { nome: "Amigo dos animais", tipo: "escolha", desc: "Sabe HP de animais, pode adestrar." },
+                    { nome: "Cura", tipo: "escolha", desc: "Gaste 2PE para 1d6 de cura, 1x/cena." },
+                    { nome: "Escolhido pela Luz", tipo: "passiva", desc: "Afinidade com elemento luz." },
+                    { nome: "Inimizade", tipo: "passiva", desc: "Dificuldade em confiar em Demônios." }
+                ]
+            },
+            demonio: {
+                nome: "Demônio",
+                buffs: "+1 MAG ou AGI e +1 FOR ou VIG | -1 AGI ou FOR e -1 MEN ou MAG",
+                modificadores: { for: 1, vig: 1, agi: -1, men: -1, mag: 1 }, // Exemplo
+                habilidades: [
+                    { nome: "Político", tipo: "escolha", desc: "Gaste 2PE para enganar NPC/player." },
+                    { nome: "Couro demoníaco", tipo: "escolha", desc: "Gaste 2PE para -3 de dano, 3x/cena." },
+                    { nome: "Amigo das chamas", tipo: "passiva", desc: "Imune a fogo fraco, defesa 1+VIG vs fogo." },
+                    { nome: "Inimizade", tipo: "passiva", desc: "Dificuldade em confiar em Anjos." }
+                ]
+            },
+            orc: {
+                nome: "Orc",
+                buffs: "+3 FOR, +3 VIG | -2 MEN, -1 MAG",
+                modificadores: { for: 3, vig: 3, agi: 0, men: -2, mag: -1 },
+                habilidades: [
+                    { nome: "Chamariz", tipo: "escolha", desc: "Gaste 2PE para atrair criaturas num raio de 15m, 2x/cena." },
+                    { nome: "Pele de aço", tipo: "escolha", desc: "Gaste 1PE para -3 de dano, 2x/cena." },
+                    { nome: "Frenesi", tipo: "passiva", desc: "Com 1/4 de vida e acerto, rola 2d4 ataques, mas recebe metade do dano causado." }
+                ]
+            },
+            golem: {
+                nome: "Golem",
+                buffs: "+3 VIG, +4 FOR ou MAG | -7 AGI",
+                modificadores: { for: 4, vig: 3, agi: -7, men: 0, mag: 0 }, // Exemplo com FOR
+                habilidades: [
+                    { nome: "Pele de aço", tipo: "escolha", desc: "Gaste 2PE para -6 de dano, 2x/cena." },
+                    { nome: "Impacto", tipo: "escolha", desc: "Gaste 2PE para +1 dado de dano no murro." },
+                    { nome: "Pedra", tipo: "passiva", desc: "Defesa 2+VIG vs impacto, cura com minerais, não usa armas." }
+                ]
+            },
+            draconideo: {
+                nome: "Draconídeo",
+                buffs: "+3 AGI ou MAG e +3 FOR ou VIG | -1 no oposto",
+                modificadores: { for: 3, vig: -1, agi: 3, men: 0, mag: -1 }, // Exemplo
+                habilidades: [
+                    { nome: "Disparo de escama", tipo: "escolha", desc: "1d10 de dano, perde defesa pelo dia, 1x/dia." },
+                    { nome: "Reforço", tipo: "escolha", desc: "Gaste 2PE para aumentar dano, 1x/turno (combate)." },
+                    { nome: "Mandíbula de ferro", tipo: "passiva", desc: "Mordida 1d8." },
+                    { nome: "Escamas de ferro", tipo: "passiva", desc: "Defesa 1+VIG, afinidade elemental." }
+                ]
+            },
+            "fada-alta": {
+                nome: "Fada Alta",
+                buffs: "+1 MEN, +1 MAG | -1 FOR, -1 VIG",
+                modificadores: { for: -1, vig: -1, agi: 0, men: 1, mag: 1 },
+                habilidades: [
+                    { nome: "Caixa de mana", tipo: "passiva", desc: "+25 mana a cada 2cm acima de 155cm, -1 AGI." },
+                    { nome: "Beleza de Fada", tipo: "escolha", desc: "Gaste 2PE para convencer ser do gênero oposto, 1x/cena." },
+                    { nome: "Encolhimento", tipo: "escolha", desc: "Gaste 3PE para altura de fada, +3 AGI por cm reduzido, perde mana bônus, 1x/3 cenas." }
+                ]
+            },
+            fada: {
+                nome: "Fada",
+                buffs: "+3 AGI, +1 MAG | -2 FOR, -2 VIG",
+                modificadores: { for: -2, vig: -2, agi: 3, men: 0, mag: 1 },
+                habilidades: [
+                    { nome: "Teleporte curto", tipo: "escolha", desc: "Gaste 2PE para teleporte curto, 4x/cena." },
+                    { nome: "Oculto", tipo: "passiva", desc: "Sabe se esconder em locais pequenos." },
+                    { nome: "Crescimento espontâneo", tipo: "escolha", desc: "Gaste 2PE para altura de fada alta, +25 mana/2cm, perde bônus de AGI." }
+                ]
+            },
+            tritao: {
+                nome: "Tritão",
+                buffs: "+2 VIG (água), +3 AGI (água) | -3 AGI (terra), +1 VIG (terra)",
+                modificadores: { for: 0, vig: 1, agi: -3, men: 0, mag: 0 }, // Terra
+                habilidades: [
+                    { nome: "Peixe", tipo: "passiva", desc: "Respiração aquática, afinidade água, transformação em peixe: +2 AGI, 1x/cena." },
+                    { nome: "Corpo de água", tipo: "escolha", desc: "Gaste PE para reduzir dano (possível anular), 1x/dia." },
+                    { nome: "Eco localização Aqua", tipo: "escolha", desc: "2PE para escanear 15m na água, 3x/cena." }
+                ]
+            },
+            besta: {
+                nome: "Besta",
+                buffs: "+2 FOR, +2 AGI ou VIG | -3 MEN, -1 MAG",
+                modificadores: { for: 2, vig: 0, agi: 2, men: -3, mag: -1 }, // Exemplo
+                habilidades: [
+                    { nome: "Faro predador", tipo: "escolha", desc: "Identifica cheiros a 15m, pode aumentar com PE, 2x/cena." },
+                    { nome: "Garras de monstro", tipo: "passiva", desc: "1d6+2 com garras." },
+                    { nome: "Camuflado", tipo: "escolha", desc: "Gaste 2PE para camuflagem, 1x/cena." },
+                    { nome: "Mandíbula de ferro", tipo: "passiva", desc: "Mordida 1d8." }
+                ]
+            },
+            goblin: {
+                nome: "Goblin",
+                buffs: "+2 AGI, +1 MEN | -2 MEN (perto de ouro), -1 FOR, -1 VIG",
+                modificadores: { for: -1, vig: -1, agi: 2, men: 1, mag: 0 },
+                habilidades: [
+                    { nome: "Mão leve", tipo: "passiva", desc: "Furtos fáceis, especialmente ouro, 2x/cena." },
+                    { nome: "Meu precioso", tipo: "passiva", desc: "Viciado em ouro, precisa de contato ou rouba." },
+                    { nome: "Goblin dourado", tipo: "escolha", desc: "Bônus conforme ouro em contato." },
+                    { nome: "Diplomata ladrão", tipo: "escolha", desc: "2PE para convencer alguém, 2x/cena." }
+                ]
+            },
+            vampiro: {
+                nome: "Vampiro",
+                buffs: "+2 MEN ou FOR, +1 MAG ou AGI | -3 VIG (dia), -1 FOR ou MEN",
+                modificadores: { for: 2, vig: -3, agi: 1, men: -1, mag: 1 }, // Exemplo dia
+                habilidades: [
+                    { nome: "Sangue-suga", tipo: "passiva", desc: "Cura 1d4 por litro de sangue." },
+                    { nome: "Metamorfose", tipo: "passiva", desc: "2PE vira morcego, +2 desloc, +4 AGI, HP/2 e -7 max, 2x/dia." },
+                    { nome: "O preço", tipo: "passiva", desc: "Fraquezas: sol, prata, alho, cruz." },
+                    { nome: "Dentes mortais", tipo: "escolha", desc: "Mordida 1d6, 2PE drena 2L, 1x/cena." },
+                    { nome: "Pai de família", tipo: "escolha", desc: "2PE oculta presença 4 turnos, 2x/dia." },
+                    { nome: "Assassino nato", tipo: "escolha", desc: "+2 testes sociais, 2PE convence com info falsa, 2x/cena." }
+                ]
+            },
+            anao: {
+                nome: "Anão",
+                buffs: "+2 FOR ou VIG, +3 MEN | -3 MAG, -2 AGI",
+                modificadores: { for: 2, vig: 0, agi: -2, men: 3, mag: -3 }, // Exemplo
+                habilidades: [
+                    { nome: "Cabeça quente", tipo: "passiva", desc: "Com 1/3 de vida, 2 ataques por turno." },
+                    { nome: "Corpo pequeno, mente grande", tipo: "passiva", desc: "Perícia forja, altura max 163cm." },
+                    { nome: "Ferreiro", tipo: "escolha", desc: "2PE para bônus em arma forjada, 1x/dia." },
+                    { nome: "Cachaceiro", tipo: "escolha", desc: "Embriagado: +3 esquiva, defesa, dano; -3 AGI, ataque." }
+                ]
+            }
+        };
+
+        // RAÇA ATUALMENTE SELECIONADA
+        let racaSelecionada = null;
+
+        // FUNÇÃO PARA SELECIONAR RAÇA
+        function selecionarRaca(racaId) {
+            // Remove seleção anterior
+            document.querySelectorAll('.raca-card').forEach(card => {
+                card.classList.remove('selecionada');
+            });
+            
+            // Adiciona seleção no card clicado
+            event.currentTarget.classList.add('selecionada');
+            
+            // Guarda a raça selecionada
+            racaSelecionada = racas[racaId];
+            
+            // Mostra informações da raça
+            mostrarInfoRaca(racaId);
+        }
+
+        // FUNÇÃO PARA MOSTRAR INFO DA RAÇA
+        function mostrarInfoRaca(racaId) {
+            const raca = racas[racaId];
+            const divInfo = document.getElementById('info-raca');
+            
+            let habilidadesHTML = '';
+            raca.habilidades.forEach(habilidade => {
+                habilidadesHTML += `
+                    <div class="habilidade-item">
+                        <div class="habilidade-nome">${habilidade.nome}</div>
+                        <div class="habilidade-desc">${habilidade.desc}</div>
+                        <span class="habilidade-tipo">${habilidade.tipo}</span>
+                    </div>
+                `;
+            });
+
+            divInfo.innerHTML = `
+                <div class="buffs-info">
+                    <h5>${raca.nome}</h5>
+                    <p style="color: white; margin-bottom: 15px;">${raca.buffs}</p>
+                    <h5 style="margin-top: 20px;">Habilidades Raciais</h5>
+                    <div class="habilidades-lista">
+                        ${habilidadesHTML}
+                    </div>
+                </div>
+            `;
+            
+            divInfo.style.display = 'block';
+        }
+
+        // FUNÇÃO PARA PRÓXIMA ETAPA
+        function proximaEtapa(etapa) {
+            if (!racaSelecionada && etapa !== 'voltar') {
+                alert('Por favor, selecione uma raça primeiro!');
+                return;
+            }
+            
+            // Aqui você pode implementar a navegação entre as etapas
+            alert('Próxima etapa: ' + etapa + ' (Em desenvolvimento)');
+        }
+    </script>
+</body>
+</html>
