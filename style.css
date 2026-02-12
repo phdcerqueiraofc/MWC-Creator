@@ -143,3 +143,33 @@ nav a:hover {
 .card p {
     color: #ddd;
 }
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .hero h2 {
+        font-size: 36px;
+    }
+    
+    .hero h3 {
+        font-size: 24px;
+    }
+    
+    .botoes-hero {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
